@@ -23,7 +23,15 @@ def create_app():
     app.config['JSON_SORT_KEYS'] = False
 
     # Enable CORS for frontend communication
-    CORS(app, resources={r"/api/*": {"origins": "*"}})
+    # In production, restrict to actual domain
+    allowed_origins = os.getenv('CORS_ORIGINS', 'http://localhost:3000,http://localhost:3001').split(',')
+    CORS(app, resources={
+        r"/api/*": {
+            "origins": allowed_origins,
+            "methods": ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+            "allow_headers": ["Content-Type", "Authorization"]
+        }
+    })
 
     # Register blueprints
     app.register_blueprint(clients_bp)
@@ -53,6 +61,17 @@ def create_app():
     @app.errorhandler(500)
     def internal_error(error):
         return jsonify({'error': 'Internal server error'}), 500
+
+    # Security headers
+    @app.after_request
+    def set_security_headers(response):
+        """Add security headers to all responses"""
+        response.headers['X-Content-Type-Options'] = 'nosniff'
+        response.headers['X-Frame-Options'] = 'DENY'
+        response.headers['X-XSS-Protection'] = '1; mode=block'
+        if os.getenv('FLASK_ENV') == 'production':
+            response.headers['Strict-Transport-Security'] = 'max-age=31536000; includeSubDomains'
+        return response
 
     # Database session cleanup
     @app.teardown_appcontext
