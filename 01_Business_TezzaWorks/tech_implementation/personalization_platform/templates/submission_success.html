@@ -1,0 +1,126 @@
+{% extends "base.html" %}
+
+{% block title %}Thank You - TezzaWorks{% endblock %}
+
+{% block content %}
+<div class="container mx-auto px-4 py-12">
+    <div class="max-w-2xl mx-auto text-center">
+        <!-- Success Icon -->
+        <div class="mb-8">
+            <div class="bg-green-100 w-24 h-24 rounded-full flex items-center justify-center mx-auto">
+                <i class="fas fa-check-circle text-5xl text-green-600"></i>
+            </div>
+        </div>
+
+        <!-- Success Message -->
+        <h1 class="text-4xl font-bold text-gray-800 mb-4">
+            Thank You, {{ company_name }}!
+        </h1>
+        <p class="text-xl text-gray-600 mb-8">
+            Your design consultation request has been submitted successfully.
+        </p>
+
+        <!-- What's Next Card -->
+        <div class="bg-white rounded-lg card-shadow p-8 text-left mb-8">
+            <h2 class="text-2xl font-bold text-gray-800 mb-4 flex items-center">
+                <i class="fas fa-info-circle mr-3 text-purple-600"></i>
+                What Happens Next?
+            </h2>
+
+            <div class="space-y-4">
+                <div class="flex items-start">
+                    <div class="bg-purple-100 rounded-full p-2 mr-4">
+                        <i class="fas fa-user-tie text-purple-600"></i>
+                    </div>
+                    <div>
+                        <h3 class="font-bold text-gray-800">Our Team Reviews Your Request</h3>
+                        <p class="text-gray-600 text-sm">We'll carefully review your brand information and requirements.</p>
+                    </div>
+                </div>
+
+                <div class="flex items-start">
+                    <div class="bg-purple-100 rounded-full p-2 mr-4">
+                        <i class="fas fa-paint-brush text-purple-600"></i>
+                    </div>
+                    <div>
+                        <h3 class="font-bold text-gray-800">Custom Designs Created</h3>
+                        <p class="text-gray-600 text-sm">We'll create 3-4 unique design options tailored to your brand.</p>
+                    </div>
+                </div>
+
+                <div class="flex items-start">
+                    <div class="bg-purple-100 rounded-full p-2 mr-4">
+                        <i class="fas fa-envelope text-purple-600"></i>
+                    </div>
+                    <div>
+                        <h3 class="font-bold text-gray-800">Email Notification</h3>
+                        <p class="text-gray-600 text-sm">You'll receive an email with a link to your personalized design gallery.</p>
+                    </div>
+                </div>
+
+                <div class="flex items-start">
+                    <div class="bg-purple-100 rounded-full p-2 mr-4">
+                        <i class="fas fa-clock text-purple-600"></i>
+                    </div>
+                    <div>
+                        <h3 class="font-bold text-gray-800">Timeline</h3>
+                        <p class="text-gray-600 text-sm">Expect to hear from us within 2-3 business days.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Gallery Link Card -->
+        <div class="bg-gradient-to-r from-purple-50 to-blue-50 rounded-lg p-6 mb-8">
+            <h3 class="text-lg font-bold text-gray-800 mb-3">
+                <i class="fas fa-bookmark mr-2"></i>
+                Bookmark Your Design Gallery
+            </h3>
+            <p class="text-gray-600 text-sm mb-4">
+                Save this link to access your personalized design gallery once we've uploaded your options:
+            </p>
+            <div class="bg-white rounded-lg p-4 flex items-center justify-between">
+                <code class="text-sm text-gray-700 flex-1 overflow-x-auto">{{ gallery_url }}</code>
+                <button onclick="copyToClipboard('{{ gallery_url }}')"
+                        class="ml-4 bg-purple-600 text-white px-4 py-2 rounded hover:bg-purple-700 transition">
+                    <i class="fas fa-copy mr-2"></i>Copy
+                </button>
+            </div>
+            <p class="text-xs text-gray-500 mt-2">
+                <i class="fas fa-lock mr-1"></i>This link is unique to your request and can be accessed anytime.
+            </p>
+        </div>
+
+        <!-- Contact Information -->
+        <div class="text-gray-600">
+            <p class="mb-2">Have questions? We're here to help!</p>
+            <p>
+                <i class="fas fa-envelope mr-2"></i>
+                <a href="mailto:info@tezzaworks.com" class="text-purple-600 hover:underline">info@tezzaworks.com</a>
+            </p>
+            <p>
+                <i class="fas fa-phone mr-2"></i>
+                (555) 123-4567
+            </p>
+        </div>
+
+        <!-- Back to Home Button -->
+        <div class="mt-8">
+            <a href="/" class="inline-block gradient-bg text-white font-bold py-3 px-8 rounded-lg hover:opacity-90 transition">
+                <i class="fas fa-home mr-2"></i>
+                Back to Home
+            </a>
+        </div>
+    </div>
+</div>
+
+<script>
+function copyToClipboard(text) {
+    navigator.clipboard.writeText(text).then(function() {
+        alert('Gallery link copied to clipboard!');
+    }, function(err) {
+        console.error('Could not copy text: ', err);
+    });
+}
+</script>
+{% endblock %}

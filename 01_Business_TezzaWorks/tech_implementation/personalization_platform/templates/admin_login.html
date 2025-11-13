@@ -1,0 +1,79 @@
+{% extends "base.html" %}
+
+{% block title %}Admin Login - TezzaWorks{% endblock %}
+
+{% block content %}
+<div class="min-h-screen flex items-center justify-center py-12 px-4">
+    <div class="max-w-md w-full">
+        <!-- Logo/Header -->
+        <div class="text-center mb-8">
+            <div class="inline-block gradient-bg text-white p-4 rounded-full mb-4">
+                <i class="fas fa-user-shield text-4xl"></i>
+            </div>
+            <h2 class="text-3xl font-bold text-gray-800">Admin Login</h2>
+            <p class="text-gray-600 mt-2">TezzaWorks Design Platform</p>
+        </div>
+
+        <!-- Login Card -->
+        <div class="bg-white rounded-lg card-shadow p-8">
+            <form method="POST" action="{{ url_for('admin.login') }}" class="space-y-6">
+                <div>
+                    <label for="username" class="block text-sm font-semibold text-gray-700 mb-2">
+                        Username
+                    </label>
+                    <div class="relative">
+                        <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                            <i class="fas fa-user text-gray-400"></i>
+                        </div>
+                        <input type="text"
+                               id="username"
+                               name="username"
+                               required
+                               class="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-600 focus:border-transparent"
+                               placeholder="Enter your username">
+                    </div>
+                </div>
+
+                <div>
+                    <label for="password" class="block text-sm font-semibold text-gray-700 mb-2">
+                        Password
+                    </label>
+                    <div class="relative">
+                        <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                            <i class="fas fa-lock text-gray-400"></i>
+                        </div>
+                        <input type="password"
+                               id="password"
+                               name="password"
+                               required
+                               class="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-600 focus:border-transparent"
+                               placeholder="Enter your password">
+                    </div>
+                </div>
+
+                <button type="submit"
+                        class="w-full gradient-bg text-white font-bold py-3 px-6 rounded-lg hover:opacity-90 transition duration-200">
+                    <i class="fas fa-sign-in-alt mr-2"></i>
+                    Sign In
+                </button>
+            </form>
+        </div>
+
+        <!-- Info Box -->
+        <div class="mt-6 bg-blue-50 border-l-4 border-blue-500 text-blue-700 p-4 rounded">
+            <p class="text-sm">
+                <i class="fas fa-info-circle mr-2"></i>
+                <strong>First time setup?</strong> Default credentials are created on first run.
+            </p>
+        </div>
+
+        <!-- Back to Home -->
+        <div class="text-center mt-6">
+            <a href="/" class="text-purple-600 hover:text-purple-700 font-semibold">
+                <i class="fas fa-arrow-left mr-2"></i>
+                Back to Home
+            </a>
+        </div>
+    </div>
+</div>
+{% endblock %}

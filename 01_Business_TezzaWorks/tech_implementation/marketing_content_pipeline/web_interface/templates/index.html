@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TezzaWorks - AI Marketing Content Generator</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <h1>TezzaWorks AI Marketing Content Generator</h1>
+            <p class="subtitle">Transform video scripts into finished marketing videos</p>
+        </header>
+
+        <!-- Navigation Tabs -->
+        <div class="tabs">
+            <button class="tab-button active" data-tab="upload">Upload Script</button>
+            <button class="tab-button" data-tab="scripts">Manage Scripts</button>
+            <button class="tab-button" data-tab="jobs">Processing Jobs</button>
+            <button class="tab-button" data-tab="videos">Generated Videos</button>
+            <button class="tab-button" data-tab="config">Configuration</button>
+        </div>
+
+        <!-- Upload Tab -->
+        <div class="tab-content active" id="upload-tab">
+            <div class="card">
+                <h2>Upload Video Script</h2>
+                <p>Upload a markdown file containing your video script(s)</p>
+
+                <div class="upload-area" id="upload-area">
+                    <div class="upload-icon">📄</div>
+                    <p>Drag and drop your script file here</p>
+                    <p class="upload-hint">or</p>
+                    <button class="btn btn-primary" id="select-file-btn">Select File</button>
+                    <input type="file" id="file-input" accept=".md,.txt" style="display: none;">
+                    <p class="upload-hint">Accepted formats: .md, .txt (max 5MB)</p>
+                </div>
+
+                <div id="upload-status" class="status-message"></div>
+            </div>
+        </div>
+
+        <!-- Scripts Tab -->
+        <div class="tab-content" id="scripts-tab">
+            <div class="card">
+                <h2>Manage Scripts</h2>
+                <p>View and process uploaded scripts</p>
+
+                <div id="scripts-list" class="list-container">
+                    <div class="loading">Loading scripts...</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Jobs Tab -->
+        <div class="tab-content" id="jobs-tab">
+            <div class="card">
+                <h2>Processing Jobs</h2>
+                <p>Monitor video generation progress</p>
+
+                <button class="btn btn-secondary" id="refresh-jobs-btn">Refresh</button>
+
+                <div id="jobs-list" class="list-container">
+                    <div class="loading">Loading jobs...</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Videos Tab -->
+        <div class="tab-content" id="videos-tab">
+            <div class="card">
+                <h2>Generated Videos</h2>
+                <p>Download your finished marketing videos</p>
+
+                <div id="videos-list" class="list-container">
+                    <div class="loading">Loading videos...</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Configuration Tab -->
+        <div class="tab-content" id="config-tab">
+            <div class="card">
+                <h2>System Configuration</h2>
+                <p>Current system settings and API status</p>
+
+                <div id="config-info" class="config-container">
+                    <div class="loading">Loading configuration...</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <p>TezzaWorks AI Marketing Content Generation System</p>
+            <p class="footer-hint">Powered by ElevenLabs, Suno AI, and FFmpeg</p>
+        </footer>
+    </div>
+
+    <!-- Modal for Script Details -->
+    <div id="script-modal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2 id="modal-title">Script Details</h2>
+            <div id="modal-body"></div>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</body>
+</html>

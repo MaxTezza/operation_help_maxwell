@@ -1,0 +1,84 @@
+# AI Marketing Content Generation System Configuration
+# Copy this file to config.local.yaml and fill in your API keys
+
+# API Keys (use environment variables for security)
+api_keys:
+  elevenlabs_api_key: ${ELEVENLABS_API_KEY}
+  suno_api_key: ${SUNO_API_KEY}
+
+# ElevenLabs Configuration
+elevenlabs:
+  default_voice_id: "21m00Tcm4TlvDq8ikWAM"  # Rachel (default)
+  voice_profiles:
+    narrator: "21m00Tcm4TlvDq8ikWAM"  # Rachel - warm, professional
+    narrator_male: "ErXwobaYiN019PkySvjV"  # Antoni - clear, friendly
+    internal_monologue: "EXAVITQu4vr4xnSDxMaL"  # Bella - conversational
+  voice_settings:
+    stability: 0.75
+    similarity_boost: 0.75
+    style: 0.0
+    use_speaker_boost: true
+  output_format: "mp3_44100_128"
+
+# Suno Music Configuration
+suno:
+  default_duration: 30  # seconds
+  default_style: "corporate_uplifting"
+  music_styles:
+    corporate_uplifting: "uplifting corporate background music, professional, motivational"
+    warm_acoustic: "warm acoustic music, guitar, friendly, authentic"
+    dramatic: "dramatic cinematic music, tension, emotional"
+    sad_trombone: "sad trombone sound effect, comedic"
+    generic_corporate: "generic soft corporate music, elevator music"
+  output_format: "mp3"
+
+# Video Assembly Configuration
+video:
+  resolution: "1920x1080"  # 1080p
+  framerate: 30
+  output_format: "mp4"
+  video_codec: "libx264"
+  audio_codec: "aac"
+  audio_bitrate: "192k"
+  default_scene_duration: 5  # seconds per scene
+  fade_duration: 0.5  # seconds for transitions
+
+# Text Overlay Settings
+text_overlay:
+  font: "Arial"
+  font_size: 48
+  font_color: "white"
+  stroke_color: "black"
+  stroke_width: 2
+  position: "bottom"
+  padding: 50
+
+# File Paths
+paths:
+  input_scripts: "input_scripts"
+  output_videos: "output"
+  assets_voiceovers: "assets/voiceovers"
+  assets_music: "assets/music"
+  assets_footage: "assets/footage"
+  temp: "temp"
+
+# Processing Options
+processing:
+  max_concurrent_jobs: 3
+  cleanup_temp_files: true
+  save_intermediate_files: false
+
+# Web Interface
+web:
+  host: "0.0.0.0"
+  port: 5003
+  debug: false
+  upload_folder: "input_scripts"
+  allowed_extensions: [".md", ".txt"]
+  max_file_size: 5242880  # 5MB
+
+# Logging
+logging:
+  level: "INFO"  # DEBUG, INFO, WARNING, ERROR, CRITICAL
+  format: "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
+  file: "pipeline.log"

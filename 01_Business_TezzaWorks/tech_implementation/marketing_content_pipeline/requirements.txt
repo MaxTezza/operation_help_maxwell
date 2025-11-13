@@ -1,0 +1,38 @@
+# AI Marketing Content Generation System - Requirements
+# Python 3.9+
+
+# Core Dependencies
+flask==3.0.0
+flask-cors==4.0.0
+werkzeug==3.0.1
+
+# API Integrations
+elevenlabs==1.8.0
+requests==2.31.0
+python-dotenv==1.0.0
+
+# Audio/Video Processing
+ffmpeg-python==0.2.0
+pydub==0.25.1
+moviepy==1.0.3
+
+# Text Processing
+markdown==3.5.1
+pyyaml==6.0.1
+python-slugify==8.0.1
+
+# File Management
+watchdog==3.0.0
+
+# Utilities
+tqdm==4.66.1
+colorama==0.4.6
+pillow==10.1.0
+
+# Testing (optional)
+pytest==7.4.3
+pytest-cov==4.1.0
+
+# Background Tasks
+celery==5.3.4
+redis==5.0.1

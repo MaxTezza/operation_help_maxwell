@@ -1,0 +1,18 @@
+# TezzaWorks Operations Dashboard - Backend Requirements
+
+# Flask web framework
+Flask==2.3.3
+Flask-CORS==4.0.0
+
+# Database
+SQLAlchemy==2.0.20
+
+# Data export
+openpyxl==3.1.2
+reportlab==4.0.4
+
+# Development tools
+python-dotenv==1.0.0
+
+# Production server (optional)
+gunicorn==21.2.0
